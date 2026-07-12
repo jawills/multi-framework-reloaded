@@ -1,0 +1,76 @@
+# Salesforce cache / local tooling
+.sf/
+.sfdx/
+.localdevserver/
+deploy-options.json
+
+# LWC / editor autocomplete
+**/lwc/jsconfig.json
+**/jsconfig.json
+
+# Dependencies
+node_modules/
+
+# UI Bundle / Vite build output (rebuild before deploy)
+dist/
+**/uiBundles/**/build/
+
+# TypeScript
+*.tsbuildinfo
+
+# Test & coverage
+coverage/
+playwright-report/
+test-results/
+.nyc_output/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Caches
+.eslintcache
+.pmdCache
+.cache/
+.parcel-cache/
+*.pid
+*.seed
+*.pid.lock
+
+# Local env / secrets
+.env
+.env.*
+!.env.example
+.config
+.secrets
+.secrets-dir
+
+# Generated GraphQL schema (regenerate with graphql:schema)
+schema.graphql
+
+# Salesforce Code Analyzer
+sca-results.csv
+sfca_results.json
+
+# OS
+.DS_Store
+Thumbs.db
+ehthumbs.db
+[Dd]esktop.ini
+$RECYCLE.BIN/
+
+# Python (Salesforce Functions)
+**/__pycache__/
+**/.venv/
+**/venv/
+
+# Editors (keep shared VS Code recommendations)
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/settings.json
