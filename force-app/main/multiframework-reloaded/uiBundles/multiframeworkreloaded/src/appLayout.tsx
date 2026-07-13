@@ -1,6 +1,7 @@
 import { Outlet, Link, useLocation } from 'react-router';
 import { getAllRoutes } from './router-utils';
 import { useState } from 'react';
+import { appConfig } from './config/app';
 
 export default function AppLayout() {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,7 +32,7 @@ export default function AppLayout() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <Link to="/" className="text-xl font-semibold text-gray-900">
-              React App
+              {appConfig.name}
             </Link>
             <button
               onClick={toggleMenu}
