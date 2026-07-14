@@ -5,11 +5,13 @@ import { createDataSDK } from '@salesforce/platform-sdk/data';
 
 export default function Export() {
   const handleExport = async () => {
+    setLoading(true);
     console.log('Exporting data...');
     console.log(data);
     console.log('run result')
     const result = await runSOQLQuery(data);
     console.log(result);
+    setLoading(false);
   };
   const handleDataChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setData(event.target.value);

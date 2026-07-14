@@ -1,9 +1,10 @@
 {
-  "name": "salesforce-app",
+  "name": "multiframework-reloaded",
   "private": true,
   "version": "1.0.0",
-  "description": "Salesforce App",
+  "description": "Multi Framework Reloaded",
   "scripts": {
+    "compile:lwc": "tsc --project ./force-app/main/default/lwc",
     "lint": "eslint **/{aura,lwc}/**/*.js",
     "test": "npm run test:unit",
     "test:unit": "sfdx-lwc-jest",
@@ -21,6 +22,7 @@
     "@salesforce/eslint-config-lwc": "^4.0.0",
     "@salesforce/eslint-plugin-aura": "^3.0.0",
     "@salesforce/eslint-plugin-lightning": "^2.0.0",
+    "@salesforce/lightning-types": "^0.10.1",
     "@salesforce/sfdx-lwc-jest": "^7.0.2",
     "eslint": "^9.29.0",
     "eslint-plugin-import": "^2.31.0",
@@ -28,7 +30,8 @@
     "husky": "^9.1.7",
     "lint-staged": "^16.1.2",
     "prettier": "^3.5.3",
-    "prettier-plugin-apex": "^2.2.6"
+    "prettier-plugin-apex": "^2.2.6",
+    "typescript": "^6.0.3"
   },
   "lint-staged": {
     "**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}": [
@@ -38,7 +41,7 @@
       "eslint"
     ],
     "**/lwc/**": [
-        "sfdx-lwc-jest -- --bail --findRelatedTests --passWithNoTests"
+      "sfdx-lwc-jest -- --bail --findRelatedTests --passWithNoTests"
     ]
   }
 }

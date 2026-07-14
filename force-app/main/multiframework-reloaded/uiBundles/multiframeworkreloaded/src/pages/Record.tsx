@@ -1,9 +1,6 @@
-import { 
-  createDataSDK, 
-  gql } from '@salesforce/platform-sdk/data';
+import { createDataSDK } from '@salesforce/platform-sdk/data';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import { useReactTable, getCoreRowModel } from '@tanstack/react-table';
 import { DataTable } from '@/components/record/data-table';
 import { columns } from '@/components/record/columns';
 
@@ -25,6 +22,7 @@ async function getRecord(recordId: string | undefined) {
 }
 export default function Record() {
   const { id } = useParams();
+  if (!id) return <div>No record ID</div>;
   const [recordData, setRecordData] = useState<RecordData[]>([]);
   const [recordName, setRecordName] = useState<string>('');
   useEffect(() => {
