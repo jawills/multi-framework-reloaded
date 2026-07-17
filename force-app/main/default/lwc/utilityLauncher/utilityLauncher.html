@@ -1,8 +1,36 @@
 <template>
-  <div>
-    <lightning-button
-      label="See All Data"
-      onclick={launchRecordPage}
-    ></lightning-button>
+  <div class="">
+    <template lwc:if={objectName}>
+      <div class="slds-p-around_medium">
+        <p>Name: {objectName}</p>
+        <template lwc:if={recordId}>
+          <p>Record Name: {recordName}</p>
+          <p>Record ID: {recordId}</p>
+          <p>
+            Created Date:
+            <lightning-formatted-date-time
+              value={createdDate}
+            ></lightning-formatted-date-time>
+          </p>
+        </template>
+      </div>
+    </template>
+    <template lwc:else><p>No data to display</p></template>
+    <template lwc:if={recordId}>
+      <div class="slds-grid slds-grid_align-center slds-p-around_xx-small">
+        <lightning-button
+          label="See All Data"
+          onclick={launchRecordPage}
+          class="slds-p-small"
+        ></lightning-button>
+      </div>
+    </template>
+    <div class="slds-grid slds-grid_align-center slds-p-around_xx-small">
+      <lightning-button
+        label="Export Data"
+        onclick={launchExportPage}
+        class="slds-p-small"
+      ></lightning-button>
+    </div>
   </div>
 </template>

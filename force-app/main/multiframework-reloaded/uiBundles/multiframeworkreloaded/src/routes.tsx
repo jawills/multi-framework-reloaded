@@ -23,7 +23,7 @@ export const routes: RouteObject[] = [
       {
         path: '/record/:id',
         element: <Record />,
-        handle: { showInNavigation: true, label: 'Record' },
+        handle: { showInNavigation: false, label: 'Record' },
       },
       {
         path: '*',

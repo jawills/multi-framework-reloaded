@@ -40,7 +40,6 @@ export default function Record() {
       setRecordData(fields);
     });
   }, [id]);
-  console.log(recordData);
 
   return <div className="container mx-auto p-10"><h1 className='text-2xl font-bold'>{objectName}({id}  / {recordName})</h1>
   {!recordData ? <div>Loading...</div> : (

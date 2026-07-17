@@ -6,7 +6,7 @@ export default function Home() {
       <div className="text-center">
         <h1 className="text-4xl font-bold text-gray-900 mb-4">Home</h1>
         <p className="text-lg text-gray-600 mb-8">
-          Welcome to your React application.
+          Welcome to {appConfig.name}
         </p>
         <p className="text-lg text-gray-600 mb-8">
           {appConfig.description}
