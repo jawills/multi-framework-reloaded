@@ -1,9 +1,13 @@
 import {
   ColumnDef,
+  SortingState,
   flexRender,
   getCoreRowModel,
+  getSortedRowModel,
   useReactTable,
+  getFilteredRowModel,
 } from "@tanstack/react-table"
+import * as React from "react"
 
 import {
   Table,
@@ -18,18 +22,39 @@ interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
   data: TData[]
 }
+import { Input } from "@/components/ui/input"
 
 export function DataTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
+  const [sorting, setSorting] = React.useState<SortingState>([])
+  const [globalFilter, setGlobalFilter] = React.useState("")
+
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
+    onSortingChange: setSorting,
+    getSortedRowModel: getSortedRowModel(),
+    onGlobalFilterChange: setGlobalFilter,
+    globalFilterFn: "includesString",
+    getFilteredRowModel: getFilteredRowModel(),
+    state: {
+      sorting,
+      globalFilter,
+    },
   })
 
   return (
+    <div>
+      <div className="flex items-center py-4">
+        <Input
+          placeholder="Filter..."
+          value={globalFilter}
+          onChange={(event) => setGlobalFilter(event.target.value)}          className="max-w-sm"
+        />
+      </div>
     <div className="overflow-hidden rounded-md border">
       <Table>
         <TableHeader>
@@ -73,6 +98,7 @@ export function DataTable<TData, TValue>({
           )}
         </TableBody>
       </Table>
+    </div>
     </div>
   )
 }

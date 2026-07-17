@@ -25,8 +25,11 @@ export default function Record() {
   if (!id) return <div>No record ID</div>;
   const [recordData, setRecordData] = useState<RecordData[]>([]);
   const [recordName, setRecordName] = useState<string>('');
+  const [objectName, setObjectName] = useState<string>('');
   useEffect(() => {
     getRecord(id).then(record => {
+      console.log(record);
+      setObjectName(record.records[id]?.apiName ?? '');
       setRecordName(record.records[id]?.fields?.Name?.value ?? '');
       const fields = Object.entries(record.records[id].fields).map(
         ([fieldName, field]: [string, any]) => ({
@@ -39,7 +42,7 @@ export default function Record() {
   }, [id]);
   console.log(recordData);
 
-  return <div><h1>Record: {id} - {recordName}</h1>
+  return <div className="container mx-auto p-10"><h1 className='text-2xl font-bold'>{objectName}({id}  / {recordName})</h1>
   {!recordData ? <div>Loading...</div> : (
     <DataTable columns={columns} data={recordData} />
   )}
